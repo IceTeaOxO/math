@@ -1,0 +1,19 @@
+pip install -r requirements.txt
+
+執行下列命令，將 Flask 執行階段設定為開發，這表示只要有變更伺服器就會自動重新載入
+# Windows
+set FLASK_ENV=development
+
+# Linux/macOS
+export FLASK_ENV=development
+
+
+金鑰管理
+我們需要金鑰才能呼叫翻譯工具服務 (或任何其他認知服務)。 每次存取此服務都要使用此金鑰。 金鑰類似於密碼。 有權存取金鑰的任何人都可以呼叫服務，而且如果使用的是付費版本，很快就會累積一大筆費用！
+
+在進行開發工作時，保護金鑰的絕佳解決方案之一是使用稱為 python-dotenv 的程式庫，
+通常稱為 dotenv。 使用 dotenv 時，我們會建立名為 .env 的檔案，
+包含所有不想放入原始程式碼的「機碼值」組。 將程式碼推送至 GitHub 時，
+我們會確保此檔案列在 gitignore 檔案中，以免不小心發佈到全世界。
+
+./ngrok http 5000
