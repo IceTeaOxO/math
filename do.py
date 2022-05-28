@@ -10,9 +10,9 @@ from keras.utils.data_utils import pad_sequences
 
 def do(text):
 
-    with open('word_dict.pk', 'rb') as f:
+    with open('./model1/word_dict.pk', 'rb') as f:
         word_dictionary = pickle.load(f)
-    with open('label_dict.pk', 'rb') as f:
+    with open('./model1/label_dict.pk', 'rb') as f:
         output_dictionary = pickle.load(f)
 
     try:
@@ -23,7 +23,7 @@ def do(text):
         x = pad_sequences(maxlen=input_shape, sequences=x, padding='post', value=0)
 
         # 载入模型
-        model_save_path = './corpus_model.h5'#./sentiment_analysis.h5
+        model_save_path = './model1/corpus_model.h5'#./sentiment_analysis.h5
         lstm_model = load_model(model_save_path)
 
         # 模型预测
@@ -31,15 +31,18 @@ def do(text):
         print(y_predict)
         label_dict = {v:k for k,v in output_dictionary.items()}
         print(label_dict)
-        print('输入语句: %s' % sent)
+        print('輸入語句: %s' % sent)
         
         label_to_word = ['生氣','難過','開心','無意義','辱罵','鼓勵','贊同','不贊同','反諷','害怕']
         
-        print('情感预测结果: %s' % label_to_word[label_dict[np.argmax(y_predict)]])
+        print('情感預測結果: %s' % label_to_word[label_dict[np.argmax(y_predict)]])
         return label_to_word[label_dict[np.argmax(y_predict)]]
 
     except KeyError as err:
-        print("您输入的句子有汉字不在词汇表中，请重新输入！")
-        print("不在词汇表中的单词为：%s." % err)
+        print("您輸入的句子有漢字不在詞彙表中，請重新輸入！")
+        print("不在詞彙表中的單詞為：%s." % err)
 
-        return "ERROR"
+        error = "您輸入的句子有漢字不在詞彙表中，請重新輸入！\n"+"不在詞彙表中的單詞為：%s." % err
+        return error
+
+

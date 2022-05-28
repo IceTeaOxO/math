@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import requests, os, uuid, json
 from do import do
+from do2 import do2
 app = Flask(__name__)
 
 
@@ -20,12 +21,45 @@ def result():
 def index_post():
     # Read the values from the form
     original_text = request.form['text']
-
-    final = do(original_text)
-    if (final=="難過"):
-        final = "*****"
-
     target_language = request.form['language']
+    print(target_language)
+    print(target_language)
+    print(target_language)
+    if(target_language=="YT-VT model"):
+        print("test success")
+        final = do(original_text)
+        if (final=="難過"):
+            final = "在我們這裡難過可是不被允許的🥺"
+    elif(target_language=="Twitch model"):
+        print("test success")
+        final = do2(original_text)
+        if (final=="難過"):
+            final = "在我們這裡難過可是不被允許的🥺"
+    
+    elif(target_language=="PTT model"):
+        print("test success")
+        final = do2(original_text)
+        if (final=="難過"):
+            final = "在我們這裡難過可是不被允許的🥺"
+
+    elif(target_language=="Dcard model"):
+        print("test success")
+        final = do2(original_text)
+        if (final=="難過"):
+            final = "在我們這裡難過可是不被允許的🥺"
+
+    elif(target_language=="FB model"):
+        print("test success")
+        final = do2(original_text)
+        if (final=="難過"):
+            final = "在我們這裡難過可是不被允許的:)"    
+
+    else:
+        print("測試失敗")
+        final = "找不到模型"
+
+    
+    
     # print(original_text)
     # print(target_language)
 
