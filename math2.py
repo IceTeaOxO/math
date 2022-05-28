@@ -52,9 +52,9 @@ def index_post():
         if (final=="難過"):
             final = "在我們這裡難過可是不被允許的🥺"
 
-    elif(target_language=="FB model"):
+    elif(target_language=="Total model"):
         print("test success")
-        final = do2(original_text)
+        final = do5(original_text)
         if (final=="難過"):
             final = "在我們這裡難過可是不被允許的:)"    
 

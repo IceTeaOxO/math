@@ -23,7 +23,7 @@ def do5(text):
         x = pad_sequences(maxlen=input_shape, sequences=x, padding='post', value=0)
 
         # 载入模型
-        model_save_path = './model5/corpus_model.h5'#./sentiment_analysis.h5
+        model_save_path = './model5/model.h5'#./sentiment_analysis.h5
         lstm_model = load_model(model_save_path)
 
         # 模型预测
