@@ -8,11 +8,11 @@ from keras.models import load_model
 from keras.utils.data_utils import pad_sequences
 # 导入字典
 
-def do3(text):
+def do5(text):
 
-    with open('./model3/word_dict.pk', 'rb') as f:
+    with open('./model5/word_dict.pk', 'rb') as f:
         word_dictionary = pickle.load(f)
-    with open('./model3/label_dict.pk', 'rb') as f:
+    with open('./model5/label_dict.pk', 'rb') as f:
         output_dictionary = pickle.load(f)
 
     try:
@@ -23,7 +23,7 @@ def do3(text):
         x = pad_sequences(maxlen=input_shape, sequences=x, padding='post', value=0)
 
         # 载入模型
-        model_save_path = './model3/corpus_model.h5'#./sentiment_analysis.h5
+        model_save_path = './model5/corpus_model.h5'#./sentiment_analysis.h5
         lstm_model = load_model(model_save_path)
 
         # 模型预测

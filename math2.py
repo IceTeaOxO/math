@@ -2,6 +2,10 @@ from flask import Flask, render_template, request
 import requests, os, uuid, json
 from do import do
 from do2 import do2
+from do3 import do3
+from do4 import do4
+from do5 import do5
+
 app = Flask(__name__)
 
 
@@ -38,13 +42,13 @@ def index_post():
     
     elif(target_language=="PTT model"):
         print("test success")
-        final = do2(original_text)
+        final = do3(original_text)
         if (final=="難過"):
             final = "在我們這裡難過可是不被允許的🥺"
 
     elif(target_language=="Dcard model"):
         print("test success")
-        final = do2(original_text)
+        final = do4(original_text)
         if (final=="難過"):
             final = "在我們這裡難過可是不被允許的🥺"
 
